@@ -17,6 +17,7 @@ import.data <- function(dataset.file = "data/dataset.csv", save.output = FALSE, 
                         numeric.filename = "data/var/numericas.txt")
 {
   missing.codes <- c(" ","", ".D", ".PULO", "P", "B", "S", "Q", "R", "F", "N", "C", "A", "T", "I", "L", "D", "V", "U", "E");
+  # missing.codes = c();
   
   dataset <- read.table(dataset.file, header=TRUE, sep = "$", strip.white = TRUE, 
                         comment.char = "", quote = "", dec=".", allowEscapes = FALSE, 

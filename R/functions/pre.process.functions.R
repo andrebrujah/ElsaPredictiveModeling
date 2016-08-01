@@ -7,6 +7,7 @@
 # versões que fazem o tratamento separadamente. Além de funções auxiliares.
 #
 ############################################################################
+
 scale.numeric <- function (training, testing, target.name = "a_dm")
 {
   index.numeric <- which(sapply(training, is.numeric));  # Usar os parametros para testar no conjunto de teste:
@@ -71,7 +72,7 @@ remove.numerical.redundants <- function (dataset, categoric.names.file = "data/A
   }
   return (dataset);
 }
-
+# http://www.rcreditscoring.com/binning-continuous-variables-in-r-the-basics/
 discretize <- function(training, testing, categoric.names.file = "data/AnaliseVariaveis/var_categoricas_mod.txt", 
                        numeric.names.file = "data/AnaliseVariaveis/var_numericas_mod.txt", target.name = "a_dm", verbose = FALSE) 
 {
@@ -273,6 +274,7 @@ transform.to.numeric.train <- function(training, target.name = "a_dm", remove.fi
     if (length(eliminate.redundant.index) > 0)
     {
       training <- training[,-eliminate.redundant.index];
+      #testing <- testing[,-eliminate.redundant.index];
     }
   }
   
@@ -280,7 +282,24 @@ transform.to.numeric.train <- function(training, target.name = "a_dm", remove.fi
   index.class <- which(colnames(training) == target.name);
   # quando o factor tem NA, diz que é uma nova categoria
   training.result <- dummy.data.frame(training[-index.class], sep=".");
- 
+  #testing.result <- dummy.data.frame(testing[-index.class], sep=".");
+  
+  # checar se training e testing tem as mesmas categorias, caso falte alguma categoria
+  # precisa criar a dummy variable correspondente manualmente com valor 0;
+  #dataset.aux <- rbind.data.frame(training, testing);
+  #dataset.aux <- dummy.data.frame(dataset.aux[-index.class], sep=".");
+  #names.in.aux.notin.training <- names(dataset.aux[which(!(names(dataset.aux) %in% names(training.result)))]);
+  #names.in.aux.notin.testing <- names(dataset.aux[which(!(names(dataset.aux) %in% names(testing.result)))]);
+  # adiciona colunas faltando com valor 0
+#   if (length(names.in.aux.notin.testing) > 0)
+#   {
+#     testing.result[,names.in.aux.notin.testing] <- 0;
+#   }
+  # ATENCAO: se conjunto de teste tiver um factor que nao esta no conjunto de teste de treino, valor no conjunto de teste precisa ser tratado deve ser tratado
+
+  # reordena colunas para os dataframes ficarem iguais
+  # testing.result <- testing.result[names(training.result)];
+  
   # recalcula indice da variavel alvo
   index.class <- which(colnames(training.result) == target.name);
   
@@ -297,6 +316,7 @@ transform.to.numeric.test <- function(testing, training.names, target.name = "a_
     eliminate.redundant.index <- categorical.redundant.index(training.names, categoric.names.file, numeric.names.file);
     if (length(eliminate.redundant.index) > 0)
     {
+      #training <- training[,-eliminate.redundant.index];
       testing <- testing[,-eliminate.redundant.index];
     }
   }

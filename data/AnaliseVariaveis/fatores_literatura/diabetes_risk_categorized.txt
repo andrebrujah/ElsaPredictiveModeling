@@ -1,0 +1,104 @@
+-- DEMOGRAPHIC, ANTROPOLOGIC --
+age
+age >55
+sex
+ethnicity
+black race
+black ethnicity
+mexican-american ethnicity
+immigrant status
+
+bmi
+waist circumference
+waist-hip ratio
+waist-height ratio
+weight
+overweight or obese
+height
+short stature
+
+-- BEHAVIOR --
+
+physical inactivity
+sport time
+diet (vegetables; fruits or berries)
+diet (green leafy vegetables; fresh fruit; wholemeal bread)
+consumption of red meat; whole grain bread; coffee and alcohol
+education
+occupation
+alcohol
+alcohol consumption
+smoking
+smoker
+smoking status
+
+-- HISTORY, COMORBIDITY, DRUGS -- 
+
+cardiovascular disease
+recall of doctor diagnosed coronary heart disease
+hypertension
+treated hypertension
+years hypertension
+history of hypertension
+
+hypertension or use of antihypertensive drugs
+hypertension or antihypertensive drugs
+use of antihypertensive drugs
+antihypertensive drugs
+current use of corticosteroids
+lipid lowering drugs
+
+family history of diabetes in first degree relative
+family history of diabetes
+family history of hypertension
+family history of obesity
+parental history of diabetes
+history of gestational diabetes
+history of gestational diabetes or macrosomia
+
+
+-- LABORATORIAL TESTS -- 
+
+fasting plasma glucose level
+pulse
+pulse pressure
+triglyceride level
+triglyceride-high density lipoprotein ratio
+systolic blood pressure
+systolic or diastolic blood pressure
+systolic and diastolic blood pressure
+high blood pressure
+blood pressure
+treated high blood pressure
+glucose
+impaired fasting glucose
+impaired glucose tolerance
+hyperglycaemia
+two hour postprandial plasma glucose level
+high density lipoprotein cholesterol level (framingham simple clinical model)
+high density lipoprotein cholesterol level (HDL)
+low density lipoprotein cholesterol level (LDL)
+total cholesterol
+total cholesterol level
+low and high density lipoprotein cholesterol levels
+history of high blood glucose levels
+history of high blood glucose level
+glucose level
+oral glucose tolerance test
+haemoglobin a1c concentration
+high uric acid level
+uric acid level
+diabetes risk score plus haemoglobin a1c concentration
+gamma-glutamyltransferase level
+alanine aminotransferase level
+white blood cell count
+
+
+-- OUTROS -- 
+
+townsend score
+6 biomarkers: adiponectin; reactive protein; ferritin; interleukin 2 receptor a; insulin
+levels of adiponectin
+c reactive protein
+haemoglobin a1c
+interleukin 2

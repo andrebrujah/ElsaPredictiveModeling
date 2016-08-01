@@ -1,8 +1,13 @@
 ############################################################################
-################## functions/generate.datasource.cv.functions.R #######################
-# 
-# Funções auxiliares para geração dos conjuntos de dados utilizados nas 
-# validações cruzadas.
+################ generate.datasource.cv.functions.R ########################
+#
+# Método utizado para criar e salvar em disco os conjuntos de dados utilizados
+# nas diferentes iterações das validações cruzadas. Cada conjunto de dados 
+# é identificado pelo seu nome, que contém entre outras informações: 
+# se ele é de treino ou teste, pre-processamento utilizado e identificador 
+# do fold e da repetição.
+# O parâmetro n é configurável e indica o número de repetições da validação
+# cruzada. Foram usados n = 3 e n = 10.
 #
 ############################################################################
 

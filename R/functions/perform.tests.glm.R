@@ -10,6 +10,7 @@
 
 perform.cv.glm <- function(n,k, ds.id = "mod", subset = c(), transformation = c(), imputation.method = c(), training.only.complete = FALSE, testing.only.complete = FALSE, test.cases.remove = c(), cutoffs = 0.5, param.df = data.frame(epsilon = 1e-8, maxit = 25), verbose = TRUE)
 {
+  
   result <- list();
   for (test in 1:nrow(param.df)) {
     result[[test]] <- 0;
@@ -127,6 +128,7 @@ output.cv.results.glm <- function(result, cutoffs, param.df, number.folds, root.
   
   # gerar uma tabela onde cada linha é um teste e as colunas são os parâmetros do teste e o resultado de cada caso
   # e colocar num csv
+
   cutoff <- c();
   param <- c();
   epsilon <- c(); # vetor para adicionar no csv output
@@ -138,7 +140,7 @@ output.cv.results.glm <- function(result, cutoffs, param.df, number.folds, root.
   balanced_accuracy.roc.sd <- c();
   sensitivity.roc.sd <- c();
   specificity.roc.sd <- c();
-  auc.sd <- c();
+  auc.sd <- c(); auc.1q <- c(); auc.3q <- c(); 
   
   balanced_accuracy.roc.list <- list();
   sensitivity.roc.list <- list();
@@ -183,6 +185,9 @@ output.cv.results.glm <- function(result, cutoffs, param.df, number.folds, root.
         specificity.roc.sd  <- c(specificity.roc.sd, sd(specificity.roc.list[[test]]));
         auc.sd <- c(auc.sd, sd(auc.list[[test]]));
         
+        auc.1q <- c(auc.1q, quantile(auc.list[[test]])[[2]]);
+        auc.3q <- c(auc.3q, quantile(auc.list[[test]])[[4]]);
+        
         cutoff <- c(cutoff, cutoffs[index.cutoff]);
         param <- c(param, test);
         epsilon <- c(epsilon, param.epsilon);
@@ -191,83 +196,152 @@ output.cv.results.glm <- function(result, cutoffs, param.df, number.folds, root.
     }
   } 
   # retirei sensibility e specificity
-  result.dataframe <- data.frame(param, maxit, epsilon, auc.mean, auc.sd, cutoff, balanced_accuracy.roc.mean, balanced_accuracy.roc.sd,
+  result.dataframe <- data.frame(param, maxit, epsilon, auc.mean, auc.sd, auc.1q, auc.3q, cutoff, balanced_accuracy.roc.mean, balanced_accuracy.roc.sd,
                                  sensitivity.roc.mean, sensitivity.roc.sd, specificity.roc.mean, specificity.roc.sd);
   result.dataframe <- result.dataframe[ order(-auc.mean, -balanced_accuracy.roc.mean), ];
   fname <- sprintf("%s/result_glm_%s.csv",output.folder.csv, tst.id);
   write.csv(result.dataframe, file=fname, row.names = FALSE);
   
-  # salva curvas plot em arquivos de imagem
-  output.folder.roc_curves <- file.path(output.folder, "roc_curves");
-  dir.create(output.folder.roc_curves, showWarnings = FALSE);
-  for (test in 1:nrow(param.df))
-  {
-    if (is.list(result[[test]]))
-    {
-      result.roc.cv <- result[[test]][[2]]; 
-      params <- paste("Param_", test, sep = "");
-      fname <- sprintf("%s/%s.png",output.folder.roc_curves, params);
-      png(filename=fname);
-      print(plot(result.roc.cv[[1]]));
-      for (fold in 2:number.folds)
-      {
-        print(plot(result.roc.cv[[fold]], add = TRUE));
-      }      
-      dev.off();
-    }  
-  }
+  fname <- sprintf("%s/auc.list_%s",output.folder, tst.id);
+  save(auc.list, file = fname);
+  fname <- sprintf("%s/balanced_accuracy.roc.list_%s",output.folder, tst.id);
+  save(balanced_accuracy.roc.list, file = fname);
+  fname <- sprintf("%s/sensitivity.roc.list_%s",output.folder, tst.id);
+  save(sensitivity.roc.list, file = fname);
+  fname <- sprintf("%s/specificity.roc.list_%s",output.folder, tst.id);
+  save(specificity.roc.list, file = fname);
   
-  # tamanho vertical dos boxplots
-  ylim.inf <- 0.35;
-  ylim.sup <- 0.85;
-  # gerar boxplots.. uma imagem com vários boxplots, cada um é para um parametro 
-  output.folder.roc_curves <- file.path(output.folder, "boxplots");
-  dir.create(output.folder.roc_curves, showWarnings = FALSE);
-  
-  fname <- sprintf("%s/auc.png",output.folder.roc_curves);
-  png(filename=fname, width = 1200, height = 1200, res = 120);
-  print(boxplot(auc.list,  ylim=c(ylim.inf,ylim.sup)));
-  dev.off();
-  
-  # cria um arquivo para cada ponto de corte 
-  # outra opcao seria um arquivo para cada parametro
-  # depende o que se quer comparar
-  for(index.cutoff in 1:length(cutoffs))
-  {
-    # coloca valores em uma lista auxiliar para poder fazer os boxplots
-    # cada item da lista vira uma caixa diferente no plot (representa uma iteração do cv com um dos parametros)
-    aux.list <- list();
+  if (!exists("is.tuning")) {
+    # salva curvas plot em arquivos de imagem
+    output.folder.roc_curves <- file.path(output.folder, "roc_curves");
+    dir.create(output.folder.roc_curves, showWarnings = FALSE);
     for (test in 1:nrow(param.df))
     {
       if (is.list(result[[test]]))
       {
-        bal.acc.values <- balanced_accuracy.roc.list[[test]][[index.cutoff]];
-        aux.list[[test]] <- bal.acc.values;
-      }
+        result.roc.cv <- result[[test]][[2]]; 
+        params <- paste("Param_", test, sep = "");
+        fname <- sprintf("%s/%s.png",output.folder.roc_curves, params);
+        png(filename=fname);
+        print(plot(result.roc.cv[[1]]));
+        for (fold in 2:number.folds)
+        {
+          print(plot(result.roc.cv[[fold]], add = TRUE));
+        }      
+        dev.off();
+      }  
     }
-    fname <- sprintf("%s/balanced_accuracy-%0.3f-.png",output.folder.roc_curves, cutoffs[index.cutoff]);
+    
+    # tamanho vertical dos boxplots
+    ylim.inf <- 0.35;
+    ylim.sup <- 0.85;
+    # gerar boxplots.. uma imagem com vários boxplots, cada um é para um parametro 
+    output.folder.roc_curves <- file.path(output.folder, "boxplots");
+    dir.create(output.folder.roc_curves, showWarnings = FALSE);
+    
+    fname <- sprintf("%s/auc.png",output.folder.roc_curves);
     png(filename=fname, width = 1200, height = 1200, res = 120);
-    print(boxplot(aux.list,  ylim=c(ylim.inf,ylim.sup)));   
+    print(boxplot(auc.list,  ylim=c(ylim.inf,ylim.sup)));
     dev.off();
-  }  
+    
+    # cria um arquivo para cada ponto de corte 
+    # outra opcao seria um arquivo para cada parametro
+    # depende o que se quer comparar
+    for(index.cutoff in 1:length(cutoffs))
+    {
+      # coloca valores em uma lista auxiliar para poder fazer os boxplots
+      # cada item da lista vira uma caixa diferente no plot (representa uma iteração do cv com um dos parametros)
+      aux.list <- list();
+      for (test in 1:nrow(param.df))
+      {
+        if (is.list(result[[test]]))
+        {
+          bal.acc.values <- balanced_accuracy.roc.list[[test]][[index.cutoff]];
+          aux.list[[test]] <- bal.acc.values;
+        }
+      }
+      fname <- sprintf("%s/balanced_accuracy-%0.3f-.png",output.folder.roc_curves, cutoffs[index.cutoff]);
+      png(filename=fname, width = 1200, height = 1200, res = 120);
+      print(boxplot(aux.list,  ylim=c(ylim.inf,ylim.sup)));   
+      dev.off();
+    }  
+  }
 }
 
 perform.tests.glm <- function(n,k, ds.id, subset = c(), transformation = c(), imputation.method = c(), training.only.complete = FALSE, testing.only.complete = FALSE, test.cases.remove = c(), tst.id, verbose = TRUE)
 {
   # parametros para comparar e descobrir o melhor atraves de validacao cruzada  
   # parametros que variam
-  maxit.vector <- c(5);
+  #epsilon.vector <- c(1e-8);
+  epsilon.vector <- c(0.01);  
+  #maxit.vector <- c(25);
+  maxit.vector <- c(50);
   # constroi lista combinando os parametros que variam
   # dai so precisa dessa lista para testar 
   param.df <- data.frame(epsilon = numeric(0), maxit = numeric(0));
-  param.df[1,] <- c(0.01, 5);
+  param.df[1,] <- c(0.01, 50);
      
-  cutoffs <- c(0.09, 0.1, 0.11);
+  cutoffs <- c(0.11);
   set.seed(666);
   
   number.folds <- n * k;
   result <- perform.cv.glm(n=n, k=k, ds.id = ds.id, subset = subset, transformation = transformation, imputation.method = imputation.method, training.only.complete = training.only.complete, testing.only.complete = testing.only.complete, test.cases.remove = test.cases.remove,  cutoffs = cutoffs, param.df = param.df, verbose = verbose);
   output.cv.results.glm(result = result, cutoffs = cutoffs, param.df = param.df, number.folds = number.folds, root.path = "output/results/glm", tst.id = tst.id, verbose = verbose); 
+}
+
+perform.generalization.glm <- function(dataset.testing, dataset.training, transformation, training.only.complete, testing.only.complete, tst.id, verbose = FALSE)
+{
+  best.epsilon <- 0.01;  
+  best.maxit <- 5;
+  
+  
+  res <- scale.numeric(dataset.training, dataset.testing);
+  dataset.training <- res[[1]];
+  dataset.testing <- res[[2]];
+  
+  if (length(imputation.method) > 0) {
+    imput.parameters <- get.imput.parameters(dataset.training);          
+    if (imputation.method == "imput.train") {
+      dataset.training <- naive.imput(dataset.training, imput.parameters);
+      
+    }           
+  }
+  
+  if (length(test.cases.remove) > 0) {
+    testing = testing[-test.cases.remove, ];
+  }
+  
+	if (training.only.complete) 
+	{
+		dataset.training = get.complete.cases(dataset = dataset.training, verbose = FALSE);
+	}
+
+	if (testing.only.complete) 
+	{
+		dataset.testing = get.complete.cases(dataset = dataset.testing, verbose = FALSE);
+	}
+  
+	if (length(transformation) > 0) 
+	{
+	  if (transformation == "numeric") 
+	  {
+		res <- transform.to.numeric(dataset.training, dataset.testing);
+		dataset.training <- res[[1]];
+		dataset.testing <- res[[2]]; 
+	  } 
+	  else if (transformation == "factor")
+	  {
+		res <- discretize(dataset.training, dataset.testing);
+		dataset.training <- res[[1]];
+		dataset.testing <- res[[2]]; 
+	  }
+	} 
+  index.class <- which(colnames(dataset.training) == "a_dm");
+  
+  model.glm <- glm(a_dm ~ ., family=binomial(link="logit"), data=dataset.training, control=list(epsilon = best.epsilon, maxit = best.maxit)); 
+  save(model.glm, file='output/new_models/model.glm');
+  generalization.predict.glm(model.glm, dataset.testing, tst.id);
+  
 }
 
 generalization.predict.glm <- function (model, dataset.testing, tst.id, model.id = "orig", subset.id = "unico") {
@@ -287,7 +361,8 @@ generalization.predict.glm <- function (model, dataset.testing, tst.id, model.id
   xtab <- table(pred = pred.class, truth = dataset.testing$a_dm);
   conf <- confusionMatrix(xtab, positive = "0");
   result.roc <- roc(dataset.testing$a_dm, pred.resp);
-  
+  if (!exists("verbose"))
+    verbose = FALSE;
   if (verbose) 
   {
     cat("\n\nAnalise ROC do teste:\n");
@@ -310,6 +385,7 @@ generalization.predict.glm <- function (model, dataset.testing, tst.id, model.id
   write.table(result.dataframe, file=fname, fileEncoding = "UTF-8",sep = ",",quote = FALSE, row.names = FALSE, col.names = FALSE, append = TRUE);
   
   # salva curvas plot em arquivos de imagem
+  
   output.folder.roc_curves <- file.path(output.folder, "roc_curves");
   dir.create(output.folder.roc_curves, showWarnings = FALSE);
   fname <- sprintf("%s/generalization_%s_glm.png",output.folder.roc_curves, tst.id);

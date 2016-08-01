@@ -20,6 +20,8 @@ remove_variables_in_file <- function(file.path, df)
 
 remove_variables_in_folder <- function(folder.path, df)
 {
+  #folder.path <- 'data/var/vars_to_remove/';
+  
   files <- list.files(path=folder.path, pattern="*.txt", full.names=T, recursive=FALSE);  
   for(file.path in files)
   {

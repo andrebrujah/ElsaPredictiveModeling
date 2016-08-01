@@ -13,9 +13,10 @@ perform.tests.glm <- function(n,k, ds.id, subset = c(), transformation = c(), im
 {
   # parametros para comparar e descobrir o melhor atraves de validacao cruzada  
 
-  epsilon.vector <- c(0.001,0.005, 0.01, 0.015, 0.04);  
-  maxit.vector <- c(5, 15);
+  epsilon.vector <- c(0.01);  
+  maxit.vector <- c(50);
   # constroi lista combinando os parametros que variam
+  # dai so precisa dessa lista para testar 
   param.df <- data.frame(epsilon = numeric(0), maxit = numeric(0));
   param.index <- 0; 
   for (epsilon in epsilon.vector)
@@ -27,7 +28,7 @@ perform.tests.glm <- function(n,k, ds.id, subset = c(), transformation = c(), im
     }
   }
   
-  cutoffs <- c(seq(0.07,0.15,0.01));
+  cutoffs <- c(0.11);
   set.seed(666);
   
   number.folds <- n * k;

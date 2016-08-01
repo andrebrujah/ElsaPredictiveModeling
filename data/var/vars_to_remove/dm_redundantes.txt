@@ -1,0 +1,16 @@
+hmpa04
+mdga1
+mdga2
+laba1
+laba2
+laba14_ttg
+tempo_jejum_final
+a_dm_sem_a1c
+a_dm_d
+a_dm_sem_a1c_d
+a_dma1_gja100
+a_dma1_gja110
+a_dm_tgd
+a_dm_gja100
+a_dm_gja110
+laba14_carga

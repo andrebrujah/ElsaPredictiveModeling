@@ -25,7 +25,7 @@ count.na.columns <-  function (dataset, thres.perc, verbose=TRUE)
   nrow <- nrow(dataset);
   thres.num <- nrow * thres.perc/100;
   
-  # conta número de NA de cada variável
+  # count number of na for each variable
   ncol <- ncol(dataset);
   na.count <- c(rep(0,ncol));
   for (var in 1:ncol)
@@ -43,13 +43,14 @@ count.na.columns <-  function (dataset, thres.perc, verbose=TRUE)
 }
 
 # receives a dataframe and return the same dataframe without the columns which NAs values counts more than a thres.perc% passing as parameter
-# recebe um dataframe e retorna o mesmo dataframe sem as variáveis que possuem mais de "thres.perc"% (passado como argumento) de NAs
 remove.na.columns <- function (dataset, thres.perc, verbose=TRUE)
 {
   nrow <- nrow(dataset);
+  # it will be removed all variables which contains more than {thres.perc}% of missing data.
+  # thres.perc <- 0;
   thres.num <- nrow * thres.perc/100;
   
-  # conta número de NAs das variáveis
+  # count number of na for each variable
   ncol <- ncol(dataset);
   na.count <- c(rep(0,ncol));
   for (var in 1:ncol)
@@ -121,3 +122,17 @@ print.complete.cases <- function (dataset.cut)
     cat("0 complete cases!");
   }  
 }
+
+
+
+# TEST
+# load("data/dfELSA");
+# dfELSA.cut <- remove.na.columns(dfELSA, 0);
+# print.complete.cases(dfELSA.cut);
+# dfELSA.cut <- remove.na.columns(dfELSA, 5);
+# print.complete.cases(dfELSA.cut);
+# dfELSA.cut <- remove.na.columns(dfELSA, 10);
+# print.complete.cases(dfELSA.cut);
+# dfELSA.cut <- remove.na.columns(dfELSA, 20);
+# print.complete.cases(dfELSA.cut);
+# save(dfELSA, file="data/dfELSAcut");

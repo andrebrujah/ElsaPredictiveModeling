@@ -1,0 +1,5 @@
+Subset,Best AUC mean,# Variables,Variable Names
+fs.nnet,0.754768081,14,a_ativfisica a_binge a_escolar a_gidade a_imc2 a_medanthipert a_medredlip a_rcq a_rendapercapita a_sfhfprem diea133 hfda07 hfda11 rcta8
+fs.glm,0.754367621,11,a_ativfisica a_binge a_escolar a_gidade a_imc2 a_medanthipert a_rcq diea133 hfda07 hfda11 rcta8
+fs.knn,0.74941027,12,a_binge a_escolar a_gidade a_imc2 a_medanthipert a_medoutahip a_rcq a_sfmiprem a_sfstkprem hfda07 hfda11 rcta8
+fs.nb,0.744734496,10,a_ativfisica a_binge a_escolar a_gidade a_imc2 a_medanthipert a_rcq afia7 diea133 hfda11

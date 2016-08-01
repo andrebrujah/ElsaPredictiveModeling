@@ -1,0 +1,143 @@
+A_GIDADE	Grupo de idade do participante
+RCTA8	sexo
+PSEA05a	Cor ou raca (Q5)
+A_IMC1	Índice de Massa Corporal (kg/m²)
+A_IMC2	IMC com 4 categorias
+A_IMC3	IMC com 6 categorias
+A_PESO	Peso corrigido (kg)
+A_PUNIF	Peso do uniforme do participante por centro
+A_OBESIDADE	Obesidade
+A_OBESIDADEABDOMINAL	Obesidade Abdominal
+ANTA5	Peso (kg)
+A_ALTSENTADA	Altura sentada (-45cm)
+ANTA4	Altura sentada (cm)
+ANTA3	Altura em pe (cm)
+A_CINT	Circunferência da Cintura (cm)
+A_RCQ	Relação Cintura-quadril
+ANTA2	Circunferencia quadril (cm) 
+A_ATIVFISICA	Atividade física no lazer
+A_MET	Soma ponderada do tempo de atividade física por semana (minutos)
+A_ESCOLAR	Escolaridade
+PSEA01	Grau de instrucao (Q1)
+HOCA01	Ativo ou aposentado (Q1)
+HOCA05	Supervisiona alguem (Q5)
+HOCA06a	Quantas pessoas supervisiona (Q6)
+HOCA07	Alguem o supervisiona (Q7)
+HOCA08	Participa de decisoes sobre recursos (Q8)
+HOCA09	Cargo de chefia ou coordenacao (Q9)
+HOCA10a	Quantos anos chefia ou coordenacao (Q10)
+HOCA16	Esta trabalhando (aposentado) (Q16)
+HOCA18	Trabalho remunerado (Q18)
+HOCA28	Regime de plantao (Q8)
+HOCA33a	Horas semanais de trabalho (Q13)
+HOCA34	Tarefas com rapidez (Q14)
+HOCA35	Trabalhar intensamente (Q15)
+HOCA36	Trabalho exige demais (Q16)
+HOCA37	Tempo suficiente cumprir tarefas (Q17)
+HOCA38	Exigencias contraditorias (Q18)
+HOCA39	Aprender coisas novas no trabalho (Q19)
+HOCA40	Exige muita habilidade/con especial(Q20)
+HOCA41	Exige iniciativas (Q21)
+HOCA42	Repetir muitas x mesmas tarefas (Q22)
+HOCA43	Pode escolher como fazer (Q23)
+HOCA44	Pode escolher o que fazer (Q24)
+HOCA45	Ambiente calmo e agradavel (Q25)
+HOCA46	Pessoas se relacionam bem (Q26)
+HOCA47	Contar com apoio dos colegas (Q27)
+HOCA48	Se dia ruim colegas compreendem (Q28)
+HOCA49	Relaciona bem com seus chefes (Q29)
+HOCA50	Gosta trabalhar com seus colegas (Q30)
+HOCA51	Contatado fora do trabalho ult 12m (Q31)
+HOCA52	Impede tempo desejado com familia (Q32)
+HOCA53	Dificulta cumprir resp domesticas (Q33)
+HOCA54	Familia interfere resp profissional (Q34)
+HOCA55	Familia/trab impedem tempo proprio (Q35)
+ESCA03	Relativo trabalho (Q3)
+EVEA12	Dif financeira grave ultimos 12 m (Q12)
+A_RENDAPERCAPITA	Renda líquida familiar per capita
+A_FUMANTE	Fumante
+HVSA01	Fumante (Q1)
+HVSA02a	Idade comecou fumar (Q2)
+HVSA03	Fuma atualmente (Q3)
+HVSA05a	Cigarros por dia (Q5)
+HVSA06a	Anos de fumo (Q6)
+HVSA07	Convive com fumantes (Q7)
+AFIA7	Bicicleta p locomocao (dias/semana) (Q7)
+AFIA8a	Pedala p locomocao (minutos/dia) (Q8)
+A_SITCONJ	Situação conjugal
+EVEA15	Rompimento amoroso ultimos 12m (Q15)
+VIFA01	Casado ou vive com alguem (Q1)
+VIFA02	Quantos anos casado (Q2)
+VIFA03	Situacao conjugal atual (Q3)
+A_SINTSONO	Sono (secao D)
+CLAA2	Dor/desconforto pernas qdo anda (Q2)
+CLAA3	Dor comeca parado em pe/senatado (Q3)
+CLAA4	Dor ao subir ou andar rapido (Q4)
+CLAA5	Dor ao andar ritmo normal no plano (Q5)
+CLAA6	Dor ao parar de andar (Q6)
+A_Cons_est_NaCl	Consumo estimado de sal por dia (g/dia)
+A_CONSDIAVERDURAS	Consumo diário de verduras e legumes
+A_CONSDIAFRUTAS	Consumo diário de frutas
+DIEA133	Consome cafe (Q133)
+A_BEBEXCESSIVO	Bebedor excessivo (H >= 210g alc/sem; M >= 140g alc/sem)
+A_BINGE	Bebedor excessivo esporádico
+A_USODEALCOOL	Uso de álcool
+A_VOLALC	Qtdade de álcool puro ingerido por semana (ml) por todos os tipos de bebida
+A_VOLCEVA	Quantidade de cerveja ingerida por semana em ml
+A_VOLDEST	Quantidade de destilados ingeridos por semana (ml)
+A_VOLVINHO	Quantidade de vinho ingerido por semana (ml)
+A_VOLVINHOBCO	Quantidade semanal de vinho branco em ml
+A_VOLVINHOTINTO	Quantidade semanal de vinho tinto (ml)
+MULA10a	N total de gestacoes (Q10)
+A_CHDHARD	Doença Coronariana grave autorreferida
+A_CHDLIGHT	Doença Coronariana leve autorreferida
+A_PRVDCC	Prevalencia de doença coronariana
+A_SFHF	Insuficiência Cardíaca autorreferida
+A_SFCVDHARD	Doença Cardiovascular autorreferida
+A_SFHFPREM	Insuficiência Cardíaca (<50 anos) autorreferida
+A_SFMI	Infarto do Miocárdio
+A_SFMIPREM	Infarto do Miocárdio (<50 anos) autorreferido
+A_SFREV	Revascularização autorreferida
+A_SFREVPREM	Revascularização (<50 anos) autorreferida
+A_SFSTK	Derrame autorreferido
+A_SFSTKPREM	Derrame  (<50 anos) autorreferido
+A_HAS2	Presença de hipertensão arterial sistêmica
+HMPA02	Hipertensao (Q2)
+HMPA03a	Idade diagnostico hipertensao (Q3)
+A_HIPERTRIG	Hipertrigliceridemia
+HMPA08	Colesterol alto (Q8)
+HMPA09a	Idade primeira vez colesterol alto (Q9)
+HFDA11	Diabetes na familia (Q11)
+A_FAMDMANYBRO	Diabetes de irmão (Qualquer idade)
+A_FAMDMANYFAT	Diabetes do pai (Qualquer idade)
+A_FAMDMANYMOM	Diabetes da mãe (Qualquer idade)
+HFDA07	Hipertensao na familia (Q7)
+A_FAMHPTANYBRO	Hipertensão de irmão (Qualquer idade)
+A_FAMHPTANYFAT	Hipertensão do pai (Qualquer idade)
+A_FAMHPTANYMOM	Hipertensão da mãe (Qualquer idade)
+A_CLASSEMEDANTHIPERT	Combinações de classes de medicamentos anti-hipertensivos
+A_MEDANTHIPERT	Uso de medicamento Anti-hipertensivo
+A_MEDOUTAHIP	Uso de outros anti-hipertensivos
+A_THAS2	Tratamento com Anti-hipertensivos (nas ultimas duas semanas)
+ACARBOSE	ACARBOSE
+A_MEDREDLIP	Uso de hipolipemiantes
+A_PDIA	Pressão Arterial diastólica média (mmHg)
+A_PSIS	Pressão arterial sistólica média (mmHg)
+LABA11	Triglicerides (mg/dL)
+LABA28	Triglicerides pós carga alimentar (mg/dL)
+A_DM_TGD	Tolerância à glicose diminuída (140 <= G 2h < 200 mg/dl)/Diabetes
+LABA1	Glicose (mg/dL)
+LABA22	Insulina (mcUI/mL)
+LABA23	Insulina pos 2h sobrecarga (mcUI/mL)
+A_BAIXOHDL	Baixos níveis de HDL
+LABA12	Colesterol HDL (mg/dL)
+LABA13	Colesterol LDL (mg/dL)
+LABA10	Colesterol Total (mg/dL)
+LABA2	Hemoglobina glicada HbA1C (%)
+LABA8	Gama Glutamil Transferase (U/L)
+LABA7	Alanina Transaminase (TGP/ALT) (U/L)
+LABA9	Acido Urico (mg/dL)
+A_DM_GJA100	Glicemia de jejum alterada (100 <= GJ <= 125 mg/dl)/Diabetes
+A_DM_GJA110	Glicemia de jejum alterada (110 <= GJ <= 125 mg/dl)/Diabetes
+A_DM_TGD	Tolerância à glicose diminuída (140 <= G 2h < 200 mg/dl)/Diabetes
+LABA25	Proteina C Reativa (mg/L)

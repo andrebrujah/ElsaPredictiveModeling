@@ -7,6 +7,7 @@
 # Também tem uma função para predição do teste de generalização.
 #
 ############################################################################
+
 perform.cv.knn <- function(n,k, ds.id = "mod", subset = c(), transformation = c(), imputation.method = c(), training.only.complete = TRUE, testing.only.complete = TRUE, test.cases.remove = c(), cutoffs = 0.5, param.df = data.frame(neighbor = 10, min.votes = 1), verbose = TRUE)
 {
   result <- list();
@@ -21,6 +22,7 @@ perform.cv.knn <- function(n,k, ds.id = "mod", subset = c(), transformation = c(
       {
         cat("\nParam:", test,"de",nrow(param.df),"\n");
       }
+      ## ESPECIFICO DO ALGORITMO
       param.neighbor <- param.df$neighbor[test];
       param.min.votes <- param.df$min.votes[test];
       
@@ -49,6 +51,7 @@ perform.cv.knn <- function(n,k, ds.id = "mod", subset = c(), transformation = c(
 
           if (testing.only.complete) 
     		  {
+    			  #testing = get.complete.cases(dataset = testing, verbose = FALSE);
             cv_id <- sprintf("%stst_comp-",cv_id);
     		  }       		
           
@@ -64,6 +67,7 @@ perform.cv.knn <- function(n,k, ds.id = "mod", subset = c(), transformation = c(
             
           } 
           
+          ## ESPECIFICO DO ALGORITMO
           # knn dá um erro se o parametro de minimos votos for igual ou maior que  o numero de vizinhos
           # vou setar todas probabilidades para zero quando isso acontece   
           output.folder <- file.path("output/datasets", sprintf("%s-cv%s-%s", ds.id, n, k));
@@ -102,6 +106,7 @@ perform.cv.knn <- function(n,k, ds.id = "mod", subset = c(), transformation = c(
           class_prob <- prob;
           for (j in 1:length(prob))
           {
+            # ERRO if (pred.aux[j] == 0) { : missing value where TRUE/FALSE needed
             if (pred.aux[j] == 0)
             {
               class_prob[j] <- prob[j];  
@@ -134,6 +139,7 @@ perform.cv.knn <- function(n,k, ds.id = "mod", subset = c(), transformation = c(
   return(result);
 }
 
+## ESPECIFICO DO ALGORITMO nome da funcao root.path default
 output.cv.results.knn <- function(result, cutoffs, param.df, number.folds, root.path = "output/results/knn", tst.id = "cv_mean_test", verbose = TRUE)
 {
   dir.create(root.path, showWarnings = FALSE);
@@ -144,6 +150,7 @@ output.cv.results.knn <- function(result, cutoffs, param.df, number.folds, root.
   
   # gerar uma tabela onde cada linha é um teste e as colunas são os parâmetros do teste e o resultado de cada caso
   # e colocar num csv
+
   cutoff <- c();
   balanced_accuracy.roc.mean <- c();
   sensitivity.roc.mean <- c();
@@ -152,7 +159,7 @@ output.cv.results.knn <- function(result, cutoffs, param.df, number.folds, root.
   balanced_accuracy.roc.sd <- c();
   sensitivity.roc.sd <- c();
   specificity.roc.sd <- c();
-  auc.sd <- c();
+  auc.sd <- c(); auc.1q <- c(); auc.3q <- c(); 
   
   balanced_accuracy.roc.list <- list();
   sensitivity.roc.list <- list();
@@ -160,6 +167,7 @@ output.cv.results.knn <- function(result, cutoffs, param.df, number.folds, root.
   auc.list <- list();
   
   param <- c();
+  ## ESPECIFICO DO ALGORITMO
   neighbor <- c(); 
   min.votes <- c();  
   tem_resultado <- FALSE;
@@ -168,6 +176,7 @@ output.cv.results.knn <- function(result, cutoffs, param.df, number.folds, root.
     if (is.list(result[[test]]))
     {
       tem_resultado <- TRUE;
+      ## ESPECIFICO DO ALGORITMO
       param.neighbor <- param.df$neighbor[test];    
       param.min.votes <- param.df$min.votes[test];
       
@@ -202,87 +211,140 @@ output.cv.results.knn <- function(result, cutoffs, param.df, number.folds, root.
         specificity.roc.sd  <- c(specificity.roc.sd, sd(specificity.roc.list[[test]]));
         auc.sd <- c(auc.sd, sd(auc.list[[test]]));
         
+        auc.1q <- c(auc.1q, quantile(auc.list[[test]])[[2]]);
+        auc.3q <- c(auc.3q, quantile(auc.list[[test]])[[4]]);
+        
         cutoff <- c(cutoff, cutoffs[index.cutoff]);
         param <- c(param, test);
+        ## ESPECIFICO DO ALGORITMO
         neighbor <- c(neighbor, param.neighbor);
         min.votes <- c(min.votes, param.min.votes);
       }
     }
   } 
   if (tem_resultado) {
-    result.dataframe <- data.frame(param, min.votes, neighbor, auc.mean, auc.sd, cutoff, balanced_accuracy.roc.mean, balanced_accuracy.roc.sd,
+    ## primeiros parametros ESPECIFICO DO ALGORITMO
+    result.dataframe <- data.frame(param, min.votes, neighbor, auc.mean, auc.sd, auc.1q, auc.3q, cutoff, balanced_accuracy.roc.mean, balanced_accuracy.roc.sd,
                                    sensitivity.roc.mean, sensitivity.roc.sd, specificity.roc.mean, specificity.roc.sd);
     result.dataframe <- result.dataframe[ order(-auc.mean, -balanced_accuracy.roc.mean), ];
     fname <- sprintf("%s/result_knn_%s.csv",output.folder.csv, tst.id);
     write.csv(result.dataframe, file=fname, row.names = FALSE);
     
-    # salva curvas plot em arquivos de imagem
-    output.folder.roc_curves <- file.path(output.folder, "roc_curves");
-    dir.create(output.folder.roc_curves, showWarnings = FALSE);
-    for (test in 1:nrow(param.df))
-    {
-      if (is.list(result[[test]]))
+    fname <- sprintf("%s/auc.list_%s",output.folder, tst.id);
+    save(auc.list, file = fname);
+    fname <- sprintf("%s/balanced_accuracy.roc.list_%s",output.folder, tst.id);
+    save(balanced_accuracy.roc.list, file = fname);
+    fname <- sprintf("%s/sensitivity.roc.list_%s",output.folder, tst.id);
+    save(sensitivity.roc.list, file = fname);
+    fname <- sprintf("%s/specificity.roc.list_%s",output.folder, tst.id);
+    save(specificity.roc.list, file = fname);
+    
+    if (!exists("is.tuning")) {
+      
+      # salva curvas plot em arquivos de imagem
+      output.folder.roc_curves <- file.path(output.folder, "roc_curves");
+      dir.create(output.folder.roc_curves, showWarnings = FALSE);
+      for (test in 1:nrow(param.df))
       {
-        result.roc.cv <- result[[test]][[2]]; 
-        params <- paste("Param_", test, sep = "");
-        fname <- sprintf("%s/%s.png",output.folder.roc_curves, params);
-        png(filename=fname);
-        print(plot(result.roc.cv[[1]]));
-        for (fold in 2:number.folds)
+        if (is.list(result[[test]]))
         {
-          print(plot(result.roc.cv[[fold]], add = TRUE));
-        }      
+          result.roc.cv <- result[[test]][[2]]; 
+          params <- paste("Param_", test, sep = "");
+          fname <- sprintf("%s/%s.png",output.folder.roc_curves, params);
+          png(filename=fname);
+          print(plot(result.roc.cv[[1]]));
+          for (fold in 2:number.folds)
+          {
+            print(plot(result.roc.cv[[fold]], add = TRUE));
+          }      
+          dev.off();
+        }  
+      }
+      
+      # tamanho vertical dos boxplots
+      ylim.inf <- 0.35;
+      ylim.sup <- 0.85;
+      # gerar boxplots.. uma imagem com vários boxplots, cada um é para um parametro 
+      output.folder.roc_curves <- file.path(output.folder, "boxplots");
+      dir.create(output.folder.roc_curves, showWarnings = FALSE);
+      
+      fname <- sprintf("%s/auc.png",output.folder.roc_curves);
+      png(filename=fname, width = 1200, height = 1200, res = 120);
+      print(boxplot(auc.list,  ylim=c(ylim.inf,ylim.sup)));
+      dev.off();
+      
+      # cria um arquivo para cada ponto de corte 
+      # outra opcao seria um arquivo para cada parametro
+      # depende o que se quer comparar
+      for(index.cutoff in 1:length(cutoffs))
+      {
+        # coloca valores em uma lista auxiliar para poder fazer os boxplots
+        # cada item da lista vira uma caixa diferente no plot (representa uma iteração do cv com um dos parametros)
+        aux.list <- list();
+        for (test in 1:nrow(param.df))
+        {
+          if (is.list(result[[test]])) {
+            bal.acc.values <- balanced_accuracy.roc.list[[test]][[index.cutoff]];
+            aux.list[[test]] <- bal.acc.values;
+          }
+        }
+        fname <- sprintf("%s/balanced_accuracy-%0.3f-.png",output.folder.roc_curves, cutoffs[index.cutoff]);
+        png(filename=fname, width = 1200, height = 1200, res = 120);
+        print(boxplot(aux.list,  ylim=c(ylim.inf,ylim.sup)));   
         dev.off();
       }  
     }
-    
-    # tamanho vertical dos boxplots
-    ylim.inf <- 0.35;
-    ylim.sup <- 0.85;
-    # gerar boxplots.. uma imagem com vários boxplots, cada um é para um parametro 
-    output.folder.roc_curves <- file.path(output.folder, "boxplots");
-    dir.create(output.folder.roc_curves, showWarnings = FALSE);
-    
-    fname <- sprintf("%s/auc.png",output.folder.roc_curves);
-    png(filename=fname, width = 1200, height = 1200, res = 120);
-    print(boxplot(auc.list,  ylim=c(ylim.inf,ylim.sup)));
-    dev.off();
-    
-    # cria um arquivo para cada ponto de corte 
-    # outra opcao seria um arquivo para cada parametro
-    # depende o que se quer comparar
-    for(index.cutoff in 1:length(cutoffs))
-    {
-      # coloca valores em uma lista auxiliar para poder fazer os boxplots
-      # cada item da lista vira uma caixa diferente no plot (representa uma iteração do cv com um dos parametros)
-      aux.list <- list();
-      for (test in 1:nrow(param.df))
-      {
-        if (is.list(result[[test]])) {
-          bal.acc.values <- balanced_accuracy.roc.list[[test]][[index.cutoff]];
-          aux.list[[test]] <- bal.acc.values;
-        }
-      }
-      fname <- sprintf("%s/balanced_accuracy-%0.3f-.png",output.folder.roc_curves, cutoffs[index.cutoff]);
-      png(filename=fname, width = 1200, height = 1200, res = 120);
-      print(boxplot(aux.list,  ylim=c(ylim.inf,ylim.sup)));   
-      dev.off();
-    }  
   }
 }
   
+## ESPECIFICO DO ALGORITMO - nome funcao
+check.generalization.knn <- function (training, testing, best.cutoff, best.neighbor, best.min.votes)
+{
+  index.class <- which(colnames(training) == "a_dm");
+  
+  ## ESPECIFICO DO ALGORITMO
+  pred.aux <-  knn(training[, -index.class], testing[, -index.class], training$a_dm, k = best.neighbor, l = best.min.votes, prob = TRUE);
+  prob <- attributes(pred.aux)$prob;
+  class_prob <- prob;
+  for (j in 1:length(prob))
+  {
+    if (pred.aux[j] == 0)
+    {
+      class_prob[j] <- prob[j];  
+    }
+    else
+    {
+      class_prob[j] <- 1 - prob[j]; 
+    }      
+  }
+  pred <- class_prob;
+  
+  pred.final <- ifelse(pred > best.cutoff , 0, 1);
+  pred.final <- factor(pred.final, levels = c("1", "0"));
+  xtab <- table(pred = pred.final, truth = testing$a_dm);
+  conf <- confusionMatrix(xtab, positive = "0");
+
+  result.roc <- roc(testing$a_dm, pred);
+  cat("\nAnalise ROC do teste:\n");
+  plot(result.roc, print.thres="best", print.thres.best.method="closest.topleft",  lwd=3, bty="l");
+  print(auc(result.roc));
+  
+  cat("\n\nClassificacao com cutoff passado como parametro:\n");
+  print(conf);
+}
+
+## ESPECIFICO DO ALGORITMO - nome funcao
 perform.tests.knn <- function(n,k, ds.id, subset = c(), transformation = c(), imputation.method = c(), training.only.complete = FALSE, testing.only.complete = FALSE, test.cases.remove = c(), tst.id, verbose = TRUE)
 {
   param.df <- data.frame(neighbor = numeric(0), min.votes = numeric(0));
-  param.df[1,] <- c(495, 1);
-  param.df[2,] <- c(470, 0);
-  param.df[3,] <- c(400, 0);
+  param.df[1,] <- c(475, 0);
 
   
   # como acessar os parametros
-  cutoffs <- c(0.09, 0.1);
+  cutoffs <- c(0.1);
   set.seed(666);
   
+  ## ESPECIFICO DO ALGORITMO - chamada funcao
   number.folds <- n * k;
   result <- perform.cv.knn(n=n, k=k, ds.id = ds.id, subset = subset, transformation = transformation, imputation.method = imputation.method, 
                            training.only.complete = training.only.complete, testing.only.complete = testing.only.complete, 
@@ -292,9 +354,61 @@ perform.tests.knn <- function(n,k, ds.id, subset = c(), transformation = c(), im
 
 }
 
+## ESPECIFICO DO ALGORITMO - nome funcao
+perform.generalization.knn <- function(dataset.testing, dataset.training, transformation, training.only.complete, testing.only.complete, tst.id, verbose = FALSE)
+{
+  
+  
+  res <- scale.numeric(dataset.training, dataset.testing);
+  dataset.training <- res[[1]];
+  dataset.testing <- res[[2]];
+  
+  if (length(imputation.method) > 0) {
+    imput.parameters <- get.imput.parameters(dataset.training);          
+    if (imputation.method == "imput.train") {
+      dataset.training <- naive.imput(dataset.training, imput.parameters);
+      
+    }           
+  }
+  
+  if (length(test.cases.remove) > 0) {
+    testing = testing[-test.cases.remove, ];
+  }
+  
+	if (training.only.complete) 
+	{
+		dataset.training = get.complete.cases(dataset = dataset.training, verbose = FALSE);
+	}
+
+	if (testing.only.complete) 
+	{
+		dataset.testing = get.complete.cases(dataset = dataset.testing, verbose = FALSE);
+	}
+  
+	if (length(transformation) > 0) 
+	{
+	  if (transformation == "numeric") 
+	  {
+		res <- transform.to.numeric(dataset.training, dataset.testing);
+		dataset.training <- res[[1]];
+		dataset.testing <- res[[2]]; 
+	  } 
+	  else if (transformation == "factor")
+	  {
+		res <- discretize(dataset.training, dataset.testing);
+		dataset.training <- res[[1]];
+		dataset.testing <- res[[2]]; 
+	  }
+	} 
+  index.class <- which(colnames(dataset.training) == "a_dm");
+  model.knn <- dataset.training;
+  save(model.knn, file='output/new_models/model.knn');
+  generalization.predict.knn(model.knn, dataset.testing, tst.id);
+}
+
 generalization.predict.knn <- function(model, dataset.testing, tst.id, model.id = "orig", subset.id = "unico") {
-  best.neighbor <- 495;
-  best.min.votes <- 1;
+  best.neighbor <- 475;
+  best.min.votes <- 0;
   best.cutoff <- 0.1;
   
   dataset.testing <- dataset.testing[, names(model)];
@@ -305,6 +419,7 @@ generalization.predict.knn <- function(model, dataset.testing, tst.id, model.id 
   class_prob <- prob;
   for (j in 1:length(prob))
   {
+    # ERRO if (pred.aux[j] == 0) { : missing value where TRUE/FALSE needed
     if (pred.aux[j] == 0)
     {
       class_prob[j] <- prob[j];  
@@ -329,7 +444,8 @@ generalization.predict.knn <- function(model, dataset.testing, tst.id, model.id 
   pred.class <- factor(pred.class, levels = c("1", "0"));
   xtab <- table(pred = pred.class, truth = dataset.testing$a_dm);
   conf <- confusionMatrix(xtab, positive = "0");  
-  
+  if (!exists("verbose"))
+    verbose = FALSE;
   if (verbose) 
   {
     cat("\n\nAnalise ROC do teste:\n");

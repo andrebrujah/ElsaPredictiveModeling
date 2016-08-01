@@ -1,0 +1,96 @@
+age
+bmi
+waist circumference
+hypertension
+family history of diabetes in first degree relative
+use of antihypertensive drugs
+parental history of diabetes
+history of gestational diabetes
+sex
+smoking
+family history of diabetes
+fasting plasma glucose level
+height
+pulse
+triglyceride-high density lipoprotein ratio
+systolic blood pressure
+waist-hip ratio
+waist-height ratio
+two hour postprandial plasma glucose level
+ethnicity
+high density lipoprotein cholesterol level
+history of high blood glucose levels
+lipid lowering drugs
+physical inactivity
+education
+occupation
+antihypertensive drugs
+white blood cell count
+triglyceride level
+alcohol
+blood pressure
+alcohol consumption
+cardiovascular disease
+townsend score
+treated high blood pressure
+current use of corticosteroids
+family history of hypertension
+family history of obesity
+history of gestational diabetes or macrosomia
+systolic or diastolic blood pressure
+treated hypertension
+total cholesterol
+short stature
+black race
+age >55
+weight
+glucose
+years hypertension
+high uric acid level
+6 biomarkers: adiponectin
+reactive protein
+ferritin
+interleukin 2 receptor a
+insulin
+history of hypertension
+diet (vegetables
+fruits or berries)
+history of high blood glucose level
+hypertension or use of antihypertensive drugs
+low density lipoprotein cholesterol level
+hyperglycaemia
+overweight or obese
+impaired fasting glucose
+black ethnicity
+mexican-american ethnicity
+impaired glucose tolerance
+high density lipoprotein cholesterol level (framingham simple clinical model)
+hypertension or antihypertensive drugs
+haemoglobin a1c concentration
+uric acid level
+oral glucose tolerance test
+immigrant status
+consumption of red meat
+whole grain bread
+coffee
+and alcohol
+diabetes risk score plus haemoglobin a1c concentration
+glucose level
+?-glutamyltransferase level
+alanine aminotransferase level
+diet (green leafy vegetables
+fresh fruit
+wholemeal bread)
+pulse pressure
+total cholesterol level
+low and high density lipoprotein cholesterol levels
+systolic and diastolic blood pressure
+smoker
+sport time
+high blood pressure
+levels of adiponectin
+c reactive protein
+haemoglobin a1c
+interleukin 2
+smoking status
+recall of doctor diagnosed coronary heart disease

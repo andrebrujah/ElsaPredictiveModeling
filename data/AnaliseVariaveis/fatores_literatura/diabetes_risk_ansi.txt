@@ -1,0 +1,65 @@
+Age, BMI, waist circumference, hypertension, family history of diabetes in first degree relative
+Age, BMI, waist circumference, use of antihypertensive drugs, parental history of diabetes, family history of diabetes in first degree relative
+Age, BMI, waist circumference, use of antihypertensive drugs, history of gestational diabetes
+Age, BMI, waist circumference, use of antihypertensive drugs, history of gestational diabetes, sex, smoking, family history of diabetes
+Waist circumference, smoking, hypertension
+Waist circumference, family history of diabetes, hypertension
+Age, family history of diabetes, hypertension, waist circumference, fasting plasma glucose level, height, pulse, triglyceride-high density lipoprotein ratio
+Age, family history of diabetes, systolic blood pressure, waist-hip ratio, waist-height ratio
+Family history of diabetes, systolic blood pressure, waist-height ratio, triglyceride-high density lipoprotein ratio, fasting plasma glucose level
+Family history of diabetes, systolic blood pressure, waist-height ratio, triglyceride-high density lipoprotein ratio, fasting plasma glucose level,
+two hour postprandial plasma glucose level
+Systolic blood pressure, waist-height ratio, fasting plasma glucose level, triglyceride-high density lipoprotein ratio, family history of diabetes
+Age, sex, ethnicity, fasting plasma glucose level, systolic blood pressure, high density lipoprotein cholesterol level, BMI, family history of diabetes
+Age, sex, ethnicity, parental history of diabetes, history of high blood glucose levels, use of antihypertensive drugs, lipid lowering drugs, smoking, physical inactivity, waist circumference, BMI, education, occupation
+Age, sex, ethnicity, parental history of diabetes, history of high blood glucose levels, use of antihypertensive drugs, lipid lowering drugs, smoking, physical inactivity, waist circumference, BMI, education
+Age, sex, ethnicity, parental history of diabetes, history of high blood glucose levels, use of antihypertensive drugs, lipid lowering drugs, smoking, physical inactivity, waist circumference, BMI
+Age, sex, ethnicity, parental history of diabetes, history of high blood glucose levels, antihypertensive drugs, smoking, physical inactivity, waist circumference, BMI
+Age, sex, ethnicity, parental history of diabetes, history of high blood glucose levels, use of antihypertensive drugs, smoking, physical inactivity, waist circumference
+Age, sex, ethnicity, parental history of diabetes, history of high blood glucose levels, use of antihypertensive drugs, smoking, physical inactivity, BMI
+Age, BMI, white blood cell count, triglyceride level, high density lipoprotein cholesterol level, fasting plasma glucose level
+Age, BMI, white blood cell count, triglyceride level, high density lipoprotein cholesterol level, fasting plasma glucose level, family history of diabetes, systolic blood pressure
+Age, sex, BMI, family history of diabetes, use of antihypertensive drugs
+Age, sex, education, alcohol, BMI, waist circumference
+Age, sex, education, alcohol, BMI, waist circumference, blood pressure, hypertension
+Age, sex, education, alcohol, BMI, waist circumference, triglyceride level, blood pressure, hypertension, fasting plasma glucose level
+Age, sex, education, alcohol, BMI, waist circumference, family history of diabetes
+Age, sex, education, family history of diabetes, alcohol, BMI, waist circumference, blood pressure, hypertension
+Age, sex, education, alcohol consumption, BMI, waist circumference, blood pressure, hypertension, fasting plasma glucose level, triglyceride level, family history of diabetes
+Age, sex, ethnicity, BMI, smoking, family history of diabetes, cardiovascular disease, Townsend score, treated high blood pressure, current use of corticosteroids
+BMI, waist circumference, family history of diabetes
+Age, sex, family history of diabetes, family history of hypertension, family history of obesity, history of gestational diabetes or macrosomia, fasting plasma glucose level, physical inactivity, triglyceride level, systolic or diastolic blood pressure, BMI
+Age, sex, ethnicity, BMI, smoking, family history of diabetes, Townsend score, treated hypertension, cardiovascular disease, current use of corticosteroids
+Age, sex, ethnicity, BMI, smoking, family history of diabetes, Townsend score, treated hypertension, cardiovascular disease, current use of corticosteroids
+Age, BMI, total cholesterol, triglyceride level, high density lipoprotein cholesterol level, hypertension, family history of diabetes, education, physical inactivity, smoking
+Waist circumference, parental history of diabetes, hypertension, short stature, black race, age >55, weight, pulse, smoking
+Glucose, waist circumference, parental history of diabetes, Years hypertension, triglyceride level, black race, high density lipoprotein cholesterol level, short stature, high uric acid level, age >55, pulse, alcohol consumption
+Age, sex, triglyceride level, fasting plasma glucose level
+6 biomarkers: adiponectin, reactive protein, ferritin, glucose, interleukin 2 receptor A, insulin
+Age, BMI, waist circumference, use of antihypertensive drugs, history of hypertension, physical inactivity, diet (vegetables, fruits or berries)
+Age, hypertension, history of high blood glucose level, BMI, fasting plasma glucose level, triglyceride level, high density lipoprotein cholesterol level
+Waist circumference, hypertension or use of antihypertensive drugs, low density lipoprotein cholesterol level, triglyceride level, BMI, hyperglycaemia
+Overweight or obese, impaired fasting glucose, high density lipoprotein cholesterol level, triglyceride level, hypertension, parental history of diabetes
+Height, waist circumference, black ethnicity, systolic blood pressure, fasting plasma glucose level, high density lipoprotein cholesterol level,
+triglyceride level, parental history of diabetes, age
+Age, sex, Mexican-American ethnicity, fasting plasma glucose level, systolic blood pressure, high density lipoprotein cholesterol level, BMI, family history of diabetes
+Age, sex, ethnicity, BMI, systolic blood pressure, fasting plasma glucose level, high density lipoprotein cholesterol level, family history of diabetes in first degree relative
+Impaired fasting glucose, family history of diabetes, impaired glucose tolerance, waist circumference, triglyceride level
+Age, sex, family history of diabetes, BMI, triglyceride level, fasting plasma glucose level, systolic blood pressure, high density lipoprotein cholesterol level (Framingham simple clinical model)
+Age, sex, parental history of diabetes, BMI, hypertension or antihypertensive drugs, high density lipoprotein cholesterol level, triglyceride level, fasting plasma glucose level
+Age, sex, parental history of diabetes, BMI, systolic blood pressure, high density lipoprotein cholesterol level, triglyceride level, fasting plasma glucose level, waist circumference 
+Age, sex, BMI, parental history of diabetes, smoking, hypertension, fasting plasma glucose level, haemoglobin A1c concentration, uric acid level, oral glucose tolerance test
+Age, ethnicity, BMI, hypertension, immigrant status, smoking, education, cardiovascular disease
+Age, waist circumference, height, systolic blood pressure, family history of diabetes, ethnicity, fasting plasma glucose level, triglyceride level, high density lipoprotein cholesterol level
+Age, waist circumference, height, history of hypertension, physical inactivity, smoking, consumption of red meat, whole grain bread, coffee, and alcohol
+Diabetes risk score plus haemoglobin A1c concentration, glucose level, triglyceride level, high density lipoprotein cholesterol level,?-glutamyltransferase level, alanine aminotransferase level
+Age, sex, use of antihypertensive drugs, BMI, family history of diabetes, physical inactivity, diet (green leafy vegetables, fresh fruit, wholemeal bread)
+Fasting plasma glucose level, two hour postprandial plasma glucose level, BMI, high density lipoprotein cholesterol level, pulse pressure
+Sex, fasting plasma glucose level, BMI, high density lipoprotein cholesterol level, pulse pressure
+Age, sex, ethnicity, triglyceride level, total cholesterol level, low and high density lipoprotein cholesterol levels, fasting plasma glucose level, family history of diabetes in first degree relative, two hour postprandial plasma glucose level, systolic and diastolic blood pressure, BMI
+Age, sex, ethnicity, fasting plasma glucose level, systolic blood pressure, high density lipoprotein cholesterol level, BMI, family history of diabetes in first degree relative
+Age, sex, education, family history of diabetes, smoker, sport time, high blood pressure, BMI, waist circumference, fasting plasma glucose level
+Age, ethnicity, waist circumference, height, systolic blood pressure, family history of diabetes, fasting plasma glucose level, triglyceride level, high density lipoprotein cholesterol level
+Levels of adiponectin, C reactive protein, ferritin, glucose, haemoglobin A1c, interleukin 2, insulin
+Age, sex, family history of diabetes, smoking status, BMI, waist circumference, hypertension, recall of doctor diagnosed coronary heart disease
+?-glutamyltransferase level, haemoglobin A1c concentration, triglyceride level

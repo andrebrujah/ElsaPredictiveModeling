@@ -1,0 +1,105 @@
+Através da revisão de diversos trabalhos cientificos sobre escores de risco de diabetes, cheguei aos fatores de risco listados abaixo.
+
+Feito isso, é preciso descobrir quais variáveis do ELSA correspondem à essas variáveis. E classificar as variáveis quanto à dificuldade de obtê-las (idade ou sexo basta perguntar para pessoa, enquanto alguns exames laboratoriais podem ter um custo bem elevado).
+
+-- DEMOGRAPHIC, ANTROPOLOGIC --
+age
+sex
+ethnicity
+
+bmi
+weight
+height
+waist circumference
+waist-hip ratio
+waist-height ratio
+Triceps skin fold thickness 
+hip circumference 
+
+-- BEHAVIOR --
+
+physical inactivity
+education
+occupation
+smoking status
+townsend score
+reluctance to use bicycle for transport
+Marital status 
+Work stress
+Duration of sleep
+pain or shortness of breath during walking
+frequent thirst
+
+- diet:
+Preference for salty food
+Preference for sweet food
+vegetables
+fruits or berries
+wholemeal bread
+whole grain bread
+red meat
+Eating fish
+Eating beef or pork or mutton
+Drinking tea
+coffe
+alcohol
+
+-- HISTORY, COMORBIDITY, DRUGS --
+ 
+Number of times pregnant (woman)
+
+history of high blood glucose
+history of ischemic heart disease 
+history of high blood glucose level
+history of gestational diabetes or macrosomia
+recall of doctor diagnosed coronary heart disease
+acarbose treatment
+history of cardiovascular Disease
+
+cardiovascular disease
+hypertension
+hyperglycaemia
+hypercholesterolemia
+dyslipidaemia
+periodontal disease
+
+family history of diabetes in first degree relative
+family history of hypertension
+family history of obesity
+
+antihypertensive drugs
+current use of corticosteroids
+lipid lowering drugs
+steroid or BP medication
+non-coronary artery disease medication
+
+-- CLINICAL AND LABORATORIAL TESTS -- 
+
+pulse pressure, systolic and diastolic blood pressure
+
+triglyceride level
+triglyceride-high density lipoprotein ratio
+impaired glucose tolerance
+impaired fasting glucose
+fasting blood sugar (FBS) 
+fasting plasma glucose level
+glucose level
+postprandial time
+2-Hour serum insulin 
+oral glucose tolerance test
+two hour postprandial plasma glucose level
+low and high density lipoprotein cholesterol levels (LDL, HDL)
+
+levels of adiponectin
+haemoglobin a1c concentration
+white blood cell count
+uric acid level
+gamma-glutamyltransferase level
+alanine aminotransferase level
+
+
+-- OUTROS -- 
+
+biomarkers: adiponectin; C reactive protein; ferritin; interleukin 2 receptor a; insulin
+interleukin 2
+CRS, FINDRISC and RPM risk scores

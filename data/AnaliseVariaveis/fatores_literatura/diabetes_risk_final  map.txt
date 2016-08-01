@@ -1,0 +1,301 @@
+Através da revisão de diversos trabalhos cientificos sobre escores de risco de diabetes, cheguei aos fatores de risco listados abaixo.
+
+Feito isso, é preciso descobrir quais variáveis do ELSA correspondem à essas variáveis. E classificar as variáveis quanto à dificuldade de obtê-las (idade ou sexo basta perguntar para pessoa, enquanto alguns exames laboratoriais podem ter um custo bem elevado).
+
+-- DEMOGRAPHIC, ANTROPOLOGIC --
+age
+A_GIDADE	Grupo de idade do participante
+
+sex
+RCTA8	sexo
+
+ethnicity
+PSEA05a	Cor ou raca (Q5)
+
+bmi
+A_IMC1	Índice de Massa Corporal (kg/m²)
+A_IMC2	IMC com 4 categorias
+A_IMC3	IMC com 6 categorias
+
+weight
+A_PESO	Peso corrigido (kg)
+A_PUNIF	Peso do uniforme do participante por centro
+A_OBESIDADE	Obesidade
+A_OBESIDADEABDOMINAL	Obesidade Abdominal
+ANTA5	Peso (kg)
+
+height
+A_ALTSENTADA	Altura sentada (-45cm)
+ANTA4	Altura sentada (cm)
+ANTA3	Altura em pe (cm)
+
+waist circumference: 
+A_CINT	Circunferência da Cintura (cm)
+
+waist-hip ratio
+A_RCQ	Relação Cintura-quadril
+
+hip circumference 
+ANTA2	Circunferencia quadril (cm)
+
+waist-height ratio
+XXX
+Triceps skin fold thickness 
+XXX
+
+-- BEHAVIOR --
+
+physical inactivity 
+A_ATIVFISICA	Atividade física no lazer
+A_MET	Soma ponderada do tempo de atividade física por semana (minutos)
+
+education
+A_ESCOLAR	Escolaridade
+PSEA01	Grau de instrucao (Q1)
+
+occupation
+HOCA01	Ativo ou aposentado (Q1)
+HOCA05	Supervisiona alguem (Q5)
+HOCA06a	Quantas pessoas supervisiona (Q6)
+HOCA07	Alguem o supervisiona (Q7)
+HOCA08	Participa de decisoes sobre recursos (Q8)
+HOCA09	Cargo de chefia ou coordenacao (Q9)
+HOCA10a	Quantos anos chefia ou coordenacao (Q10)
+HOCA16	Esta trabalhando (aposentado) (Q16)
+HOCA18	Trabalho remunerado (Q18)
+HOCA28	Regime de plantao (Q8)
+HOCA33a	Horas semanais de trabalho (Q13)
+HOCA34	Tarefas com rapidez (Q14)
+HOCA35	Trabalhar intensamente (Q15)
+HOCA36	Trabalho exige demais (Q16)
+HOCA37	Tempo suficiente cumprir tarefas (Q17)
+HOCA38	Exigencias contraditorias (Q18)
+HOCA39	Aprender coisas novas no trabalho (Q19)
+HOCA40	Exige muita habilidade/con especial(Q20)
+HOCA41	Exige iniciativas (Q21)
+HOCA42	Repetir muitas x mesmas tarefas (Q22)
+HOCA43	Pode escolher como fazer (Q23)
+HOCA44	Pode escolher o que fazer (Q24)
+HOCA45	Ambiente calmo e agradavel (Q25)
+HOCA46	Pessoas se relacionam bem (Q26)
+HOCA47	Contar com apoio dos colegas (Q27)
+HOCA48	Se dia ruim colegas compreendem (Q28)
+HOCA49	Relaciona bem com seus chefes (Q29)
+HOCA50	Gosta trabalhar com seus colegas (Q30)
+HOCA51	Contatado fora do trabalho ult 12m (Q31)
+HOCA52	Impede tempo desejado com familia (Q32)
+HOCA53	Dificulta cumprir resp domesticas (Q33)
+HOCA54	Familia interfere resp profissional (Q34)
+HOCA55	Familia/trab impedem tempo proprio (Q35)
+
+Work stress
+ESCA03	Relativo trabalho (Q3)
+EVEA12	Dif financeira grave ultimos 12 m (Q12)
+A_RENDAPERCAPITA	Renda líquida familiar per capita
+
+smoking status
+A_FUMANTE	Fumante
+HVSA01	Fumante (Q1)
+HVSA02a	Idade comecou fumar (Q2)
+HVSA03	Fuma atualmente (Q3)
+HVSA05a	Cigarros por dia (Q5)
+HVSA06a	Anos de fumo (Q6)
+HVSA07	Convive com fumantes (Q7)
+
+
+reluctance to use bicycle for transport
+AFIA7	Bicicleta p locomocao (dias/semana) (Q7)
+AFIA8a	Pedala p locomocao (minutos/dia) (Q8)
+
+Marital status 
+A_SITCONJ	Situação conjugal
+EVEA15	Rompimento amoroso ultimos 12m (Q15)
+VIFA01	Casado ou vive com alguem (Q1)
+VIFA02	Quantos anos casado (Q2)
+VIFA03	Situacao conjugal atual (Q3)
+
+Duration of sleep
+A_SINTSONO	Sono (secao D)
+
+pain or shortness of breath during walking
+CLAA2	Dor/desconforto pernas qdo anda (Q2)
+CLAA3	Dor comeca parado em pe/senatado (Q3)
+CLAA4	Dor ao subir ou andar rapido (Q4)
+CLAA5	Dor ao andar ritmo normal no plano (Q5)
+CLAA6	Dor ao parar de andar (Q6)
+
+frequent thirst
+XXXX
+
+- diet:
+Preference for salty food
+A_Cons_est_NaCl	Consumo estimado de sal por dia (g/dia)
+
+Preference for sweet food
+vegetables
+A_CONSDIAVERDURAS	Consumo diário de verduras e legumes
+
+fruits or berries
+A_CONSDIAFRUTAS	Consumo diário de frutas
+
+coffe
+DIEA133	Consome cafe (Q133)
+
+alcohol
+A_BEBEXCESSIVO	Bebedor excessivo (H >= 210g alc/sem; M >= 140g alc/sem)
+A_BINGE	Bebedor excessivo esporádico
+A_USODEALCOOL	Uso de álcool
+A_VOLALC	Qtdade de álcool puro ingerido por semana (ml) por todos os tipos de bebida
+A_VOLCEVA	Quantidade de cerveja ingerida por semana em ml
+A_VOLDEST	Quantidade de destilados ingeridos por semana (ml)
+A_VOLVINHO	Quantidade de vinho ingerido por semana (ml)
+A_VOLVINHOBCO	Quantidade semanal de vinho branco em ml
+A_VOLVINHOTINTO	Quantidade semanal de vinho tinto (ml)
+
+
+wholemeal bread
+whole grain bread
+red meat
+Eating fish
+Eating beef or pork or mutton
+Drinking tea
+XXXX
+
+-- HISTORY, COMORBIDITY, DRUGS --
+ 
+Number of times pregnant (woman)
+MULA10a	N total de gestacoes (Q10)
+
+
+history of high blood glucose
+history of ischemic heart disease 
+history of gestational diabetes or macrosomia
+recall of doctor diagnosed coronary heart disease
+A_CHDHARD	Doença Coronariana grave autorreferida
+A_CHDLIGHT	Doença Coronariana leve autorreferida
+
+history of cardiovascular Disease
+A_PRVDCC	Prevalencia de doença coronariana
+
+
+cardiovascular disease
+A_SFHF	Insuficiência Cardíaca autorreferida
+A_SFCVDHARD	Doença Cardiovascular autorreferida
+A_SFHFPREM	Insuficiência Cardíaca (<50 anos) autorreferida
+A_SFMI	Infarto do Miocárdio
+A_SFMIPREM	Infarto do Miocárdio (<50 anos) autorreferido
+A_SFREV	Revascularização autorreferida
+A_SFREVPREM	Revascularização (<50 anos) autorreferida
+A_SFSTK	Derrame autorreferido
+A_SFSTKPREM	Derrame  (<50 anos) autorreferido
+
+
+hypertension
+A_HAS2	Presença de hipertensão arterial sistêmica
+HMPA02	Hipertensao (Q2)
+HMPA03a	Idade diagnostico hipertensao (Q3)
+
+
+hyperglycaemia
+A_HIPERTRIG	Hipertrigliceridemia
+
+hypercholesterolemia
+HMPA08	Colesterol alto (Q8)
+HMPA09a	Idade primeira vez colesterol alto (Q9)
+
+dyslipidaemia
+periodontal disease
+
+family history of diabetes in first degree relative
+HFDA11	Diabetes na familia (Q11)
+A_FAMDMANYBRO	Diabetes de irmão (Qualquer idade)
+A_FAMDMANYFAT	Diabetes do pai (Qualquer idade)
+A_FAMDMANYMOM	Diabetes da mãe (Qualquer idade)
+
+family history of hypertension
+HFDA07	Hipertensao na familia (Q7)
+A_FAMHPTANYBRO	Hipertensão de irmão (Qualquer idade)
+A_FAMHPTANYFAT	Hipertensão do pai (Qualquer idade)
+A_FAMHPTANYMOM	Hipertensão da mãe (Qualquer idade)
+
+family history of obesity
+
+antihypertensive drugs
+A_CLASSEMEDANTHIPERT	Combinações de classes de medicamentos anti-hipertensivos
+A_MEDANTHIPERT	Uso de medicamento Anti-hipertensivo
+A_MEDOUTAHIP	Uso de outros anti-hipertensivos
+A_THAS2	Tratamento com Anti-hipertensivos (nas ultimas duas semanas)
+
+
+acarbose treatment
+ACARBOSE	ACARBOSE
+
+lipid lowering drugs
+A_MEDREDLIP	Uso de hipolipemiantes
+
+current use of corticosteroids
+steroid or BP medication
+non-coronary artery disease medication
+
+
+-- CLINICAL AND LABORATORIAL TESTS -- 
+
+pulse pressure, systolic and diastolic blood pressure
+A_PDIA	Pressão Arterial diastólica média (mmHg)
+A_PSIS	Pressão arterial sistólica média (mmHg)
+
+
+triglyceride level
+LABA11	Triglicerides (mg/dL)
+LABA28	Triglicerides pós carga alimentar (mg/dL)
+
+impaired glucose tolerance
+A_DM_TGD	Tolerância à glicose diminuída (140 <= G 2h < 200 mg/dl)/Diabetes
+
+glucose level
+LABA1	Glicose (mg/dL)
+
+2-Hour serum insulin 
+LABA22	Insulina (mcUI/mL)
+LABA23	Insulina pos 2h sobrecarga (mcUI/mL)
+
+low and high density lipoprotein cholesterol levels (LDL, HDL):
+A_BAIXOHDL	Baixos níveis de HDL
+LABA12	Colesterol HDL (mg/dL)
+LABA13	Colesterol LDL (mg/dL)
+LABA10	Colesterol Total (mg/dL)
+
+haemoglobin a1c concentration
+LABA2	Hemoglobina glicada HbA1C (%)
+
+gamma-glutamyltransferase level
+LABA8	Gama Glutamil Transferase (U/L)
+
+alanine aminotransferase level
+LABA7	Alanina Transaminase (TGP/ALT) (U/L)
+
+uric acid level
+LABA9	Acido Urico (mg/dL)
+
+triglyceride-high density lipoprotein ratio
+impaired fasting glucose
+A_DM_GJA100	Glicemia de jejum alterada (100 <= GJ <= 125 mg/dl)/Diabetes
+A_DM_GJA110	Glicemia de jejum alterada (110 <= GJ <= 125 mg/dl)/Diabetes
+
+fasting blood sugar (FBS) 
+fasting plasma glucose level
+oral glucose tolerance test
+A_DM_TGD	Tolerância à glicose diminuída (140 <= G 2h < 200 mg/dl)/Diabetes
+
+postprandial time
+two hour postprandial plasma glucose level
+
+white blood cell count
+
+-- OUTROS -- 
+levels of adiponectin
+biomarkers: adiponectin; C reactive protein; ferritin; interleukin 2 receptor a; insulin
+LABA25	Proteina C Reativa (mg/L)
+
+interleukin 2
+CRS, FINDRISC and RPM risk scores
